@@ -80,7 +80,7 @@ class tl_EventForm1 extends Component {
     }
 }
 
-export default TVC_EventForm1;
+export default tl_EventForm1;
  18 changes: 18 additions & 0 deletions18  
 Lesson03/event-demo/src/components/tl_EventForm2.js
 @@ -0,0 +1,18 @@
