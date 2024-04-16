@@ -11,10 +11,10 @@ Lesson03/event-demo/src/App.js
 import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
-import TVC_EventForm1 from './components/TVC_EventForm1';
-import TVC_EventForm2 from './components/TVC_EventForm2';
-import TVC_EventForm3 from './components/TVC_EventForm3';
-import TVC_EventForm4 from './components/TVC_EventForm4';
+import tl_EventForm1 from './components/tl_EventForm1';
+import tl_EventForm2 from './components/tl_EventForm2';
+import tl_EventForm3 from './components/tl_EventForm3';
+import tl_EventForm4 from './components/tl_EventForm4';
 
 function App() {
   return (
@@ -40,10 +40,10 @@ class App extends Component {
     return (
       <div className='container'>
           <h1>Event Form Demo</h1>
-          <TVC_EventForm1 />
-          <TVC_EventForm2 />
-          <TVC_EventForm3 />
-          <TVC_EventForm4 name="lth thu4
+          <tl_EventForm1 />
+          <tl_EventForm2 />
+          <tl_EventForm3 />
+          <tl_EventForm4 name="lth thu4
             " />
       </div>
     );
@@ -53,11 +53,11 @@ class App extends Component {
 export default App;
 export default App;
  26 changes: 26 additions & 0 deletions26  
-Lesson03/event-demo/src/components/TVC_EventForm1.js
+Lesson03/event-demo/src/components/tl_EventForm1.js
 @@ -0,0 +1,26 @@
 import React, { Component } from 'react';
 
-class TVC_EventForm1 extends Component {
+class tl_EventForm1 extends Component {
 
     // Hàm xử lý sự kiện
     eventHandleClick1 = ()=>{
@@ -82,11 +82,11 @@ class TVC_EventForm1 extends Component {
 
 export default TVC_EventForm1;
  18 changes: 18 additions & 0 deletions18  
-Lesson03/event-demo/src/components/TVC_EventForm2.js
+Lesson03/event-demo/src/components/tl_EventForm2.js
 @@ -0,0 +1,18 @@
 import React from 'react'
 
-export default function TVC_EventForm2() {
+export default function tl_EventForm2() {
 
     // Định nghĩa các hàm xử lý sự kiện
     const eventHandleClick1 = (content)=>{
@@ -103,11 +103,11 @@ export default function TVC_EventForm2() {
   )
 }
  36 changes: 36 additions & 0 deletions36  
-Lesson03/event-demo/src/components/TVC_EventForm3.js
+Lesson03/event-demo/src/components/tl_EventForm3.js
 @@ -0,0 +1,36 @@
 import React, { Component } from 'react';
 // Xử lý sự kiện với props, state
-class TVC_EventForm3 extends Component {
+class tl_EventForm3 extends Component {
     constructor(props){
         super(props);
         // Tạo đối tượng dữ liệu thông qua state
@@ -140,13 +140,13 @@ class TVC_EventForm3 extends Component {
     }
 }
 
-export default TVC_EventForm3;
+export default tl_EventForm3;
  28 changes: 28 additions & 0 deletions28  
-Lesson03/event-demo/src/components/TVC_EventForm4.js
+Lesson03/event-demo/src/components/tl_EventForm4.js
 @@ -0,0 +1,28 @@
 import React, { Component } from 'react';
 
-class TVC_EventForm4 extends Component {
+class tl_EventForm4 extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -171,4 +171,4 @@ class TVC_EventForm4 extends Component {
     }
 }
 
-export default TVC_EventForm4;# reactthu
+export default tl_EventForm4;# reactthu
