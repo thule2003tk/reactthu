@@ -43,7 +43,8 @@ class App extends Component {
           <TVC_EventForm1 />
           <TVC_EventForm2 />
           <TVC_EventForm3 />
-          <TVC_EventForm4 name="Chung Trịnh Văn" />
+          <TVC_EventForm4 name="lth thu4
+            " />
       </div>
     );
   }
@@ -96,7 +97,7 @@ export default function TVC_EventForm2() {
   return (
     <div className='alert alert-success'>
       <h2>Event Demo - Function Component</h2>
-        <button onClick={eventHandleClick1("Trịnh Văn Chung")}>Gọi khi render</button>
+        <button onClick={eventHandleClick1("lth thu")}>Gọi khi render</button>
         <button onClick={()=>eventHandleClick1("K22CNT1-ReactJs")}>Gọi khi click </button>
     </div>
   )
@@ -111,7 +112,7 @@ class TVC_EventForm3 extends Component {
         super(props);
         // Tạo đối tượng dữ liệu thông qua state
         this.state = {
-            name:"Trịnh Văn Chung",
+            name:"lth thu",
             job:"Dev soft"
         }
     }
@@ -149,7 +150,7 @@ class TVC_EventForm4 extends Component {
     constructor(props){
         super(props);
         this.state={
-            name:"Chung Chung"
+            name:"thu le"
         }
     }
 
