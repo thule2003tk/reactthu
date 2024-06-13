@@ -1,116 +1,50 @@
-import "./App.css";
-import { React, useState ,useEffect } from "react";
-import ThuListTask from "./components/ThuListTask";
-import ThuTaskAddOrEdit from "./components/ThuTaskAddOrEdit";
+import React, { useState } from 'react';
+
+import thuListStudent from './component/ThuListStudent'
+import thuAddOrEdit from './component/ThuAddOrEdit'
+
 function App() {
   // Mock data
-  const thu_listTasks = useState [
-    {
-      thu_taskId: 2210900126,
-      thu_taskName: "Lê Thương Hoài Thu",
-      thu_level: "Small",
-    },
-    {
-      thu_taskId: 1,
-      thu_taskName: "Học lập trình frontend",
-      thu_level: "Small",
-    },
-    {
-      thu_taskId: 2,
-      thu_taskName: "Học lập trình reactjs",
-      thu_level: "Medium",
-    },
-    {
-      thu_taskId: 3,
-      thu_taskName: "Lập trình với Frontend - Reactjs",
-      thu_level: "High",
-    },
-    {
-      thu_taskId: 4,
-      thu_taskName: "Lập trình Fullstack (PHP, Java, NetCore)",
-      thu_level: "Small",
-    }
-  ];
-  let data =  JSON.parse(localStorage.getItem("ThuDataTasks"));
-  if(data === null || data.length === 0){
-    data= thu_listTasks;
-    localStorage.setItem("ThuDataTasks",JSON.stringify(data))
-  }
-  // sử dụng hàm useState để lưu trữ trạng thái dữ liệu
-  const [thuListTasks, setThuListTasks] = useState(data);
- 
-  useEffect(()=>{
-    localStorage.setItem("ThuDataTasks",JSON.stringify(thuListTasks))
-  },[thuListTasks])
-  // sử dụng hàm useState để lưu trữ trạng thái dữ liệu
-  
+  const thu_listTasks = [
+      { thuId: 106, thuName: "Lê Thương Hoài Thu", thuAge: 25, thuIsActive: true },
+      { thuId: 1, thuName: "Đỗ Khánh Linh", thuAge: 22, thuIsActive: true },
+      { thuId: 2, thuName: "Nguyễn văn Quyến", thuAge: 23, thuIsActive: false },
+      { thuId: 3, thuName: "Phạm Minh Hiền", thuAge: 24, thuIsActive: true },
+      { thuId: 4, thuName: "Nguyễn Thành Công", thuAge: 26, thuIsActive: false },
+  ]
 
-  // tạo state dữ liệu cho form (add, edit)
-  // Đối tượng task
-  const thuTaksObj = {
-    thu_taskId: 0,
-    thu_taskName: "Môn",
-    thu_level: "Medium",
-  };
-  // Tạo state
-  const [thuTask, setThuTask] = useState(thuTaksObj); // dữ liệu trên form
-  // state để phân biệt trạng thái là thêm mới hay sửa
-  const [thuIsAddOrEdit, setThuIsAddOrEdit ] = useState(true); // mặc định ban đầu là form thêm mới
+  const [thulistStudents, setthuListStudents] = useState(thu_listTasks);
+  const [thuEditingTask, setthuEditingTask] = useState(null);
 
-  // Nhận dữ liệu khi sửa
-  const thuHandleEdit = (param) => {
-    console.log("App - Edit:", param);
-    // Cập nhật lại tvcTask
-    setThuTask(param);
-    // Cập nhật trạng thái form là sửa
-    setThuIsAddOrEdit(false);
-  };
-
-  const thuHandleSubmit = (thuParam) => {
-    console.log("App:", thuParam);
-    if(thuIsAddOrEdit===true){ // trường hợp thêm mới dữ liệu
-      setThuListTasks((prev) => {
-        return [...prev, thuParam];
-      });
-    }else{ // Trường hợp sử dụng dữ liệu
-      for (let i = 0; i < thuListTasks.length; i++) {
-          if(thuListTasks[i].thu_taskId = thuParam.thu_taskId){
-            thuListTasks[i] = thuParam;
-            break;
-          }
+  const thuHandleSubmit = (thuTask) => {
+      if (thuEditingTask !== null) {
+          setthuListStudents(prev => prev.map((task, index) => index === thuEditingTask.index ? thuTask : task));
+          setthuEditingTask(null);
+      } else {
+          setthuListStudents(prev => [...prev, thuTask]);
       }
-      // Cập nhật lại state (thuListTasks)
-      setThuListTasks((prev) => {
-        return [...prev];
-      });
-    }
-  };
-
-  // Hàm xóa
-  const thuHandleDelete = (param)=>{
-    let thuResult = thuListTasks.filter(x=>x.thu_taskId != param.thu_taskId);
-    setThuListTasks(thuResult);
   }
-  return (
-    <div className="container border">
-      <h1>Lê Thương Hoài Thu</h1>
-      <hr />
-      <div>
-        {/* Danh sách list task  */}
-        <ThuListTask
-          renderThuListTasks={thuListTasks}
-          onThuTaskEdit={thuHandleEdit}
-          onThuTaskDelete = {thuHandleDelete}
-        />
-      </div>
-      <div>
-        <ThuTaskAddOrEdit
-            renderThuTask = {thuTask}
-            renderThuIsAddOrEdit = {thuIsAddOrEdit}
 
-            thuOnSubmit={thuHandleSubmit} />
+  const thuHandleEditTask = (index) => {
+      setthuEditingTask({ ...thulistStudents[index], index });
+  }
+
+  const thuHandleRemoveTask = (index) => {
+      setthuListStudents(prev => prev.filter((_, i) => i !== index));
+  }
+
+  return (
+      <div className="container border">
+          <h1>Lê Thương Hoài Thu</h1>
+          <hr />
+          <div>
+              {/*danh sach list tasks*/}
+              <thuListStudent renderthuListStudents={thulistStudents} onEditTask={thuHandleEditTask} onRemoveTask={thuHandleRemoveTask} />
+          </div>
+          <div>
+              <thuAddOrEdit thuOnSubmit={thuHandleSubmit} thuEditingTask={thuEditingTask} />
+          </div>
       </div>
-    </div>
   );
 }
 
