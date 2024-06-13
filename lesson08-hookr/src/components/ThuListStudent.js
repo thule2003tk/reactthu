@@ -33,7 +33,6 @@ export default function ThuListStudent({ renderThuListStudents, onEditTask, onRe
             <table className='table table-bordered'>
                 <thead>
                     <tr>
-                        <th>STT</th>
                         <th>Task ID</th>
                         <th>Task Name</th>
                         <th>Age</th>
