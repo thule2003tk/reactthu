@@ -5,7 +5,7 @@ export default function ThuAddOrEdit({ thuOnSubmit, thuEditingTask }) {
         thuId: 0,
         thuName: "",
         thuAge: 0,
-        thuIsActive: false
+        thuIsActive: true/false
     }
     const [thuListStudent, setThuListStudent] = useState(thuTasksObj);
 
