@@ -1,22 +1,30 @@
 import React from 'react'
-
-export default function ThuListUsers({renderThuListUsers}) {
+import axios from '../api/thuApi'
+export default function ThuListUsers({renderThuListUsers, onThuDelete}) {
     console.log("ThuListUsers:",renderThuListUsers);
-    // hiener thi đữ liệu
+    // hien thi dữ liệu
     let thuElementUser = renderThuListUsers.map((thuUser,index)=>{
         return(
             <>
-                <tr>
+                <tr key={index}>
                     <td>{thuUser.id}</td>
                     <td>{thuUser.UserName}</td>
                     <td>{thuUser.Password}</td>
                     <td>{thuUser.Email}</td>
                     <td>{thuUser.Phone}</td>
-                    <td>...</td>
+                    <td>
+                        <button className='btn-btn-danger'onClick={()=>thuHandleDelete(thuUser)}>Delete</button>
+                    </td>
                 </tr>
             </>
         )
     })
+    const thuHandleDelete =  async (param)=>{
+        if(window.confirm('Bạn có muốn xóa thật không?')){
+            const thuRes = await axios.delete("thuUsers/"+param.id);
+        }
+        onThuDelete();
+    }
   return (
     <div className='row'>
         <div className='col-md-12'>
