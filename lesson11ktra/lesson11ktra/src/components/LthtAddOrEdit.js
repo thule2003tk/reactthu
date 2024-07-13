@@ -3,27 +3,28 @@ import axios from '../api/LthtApi';
 
 export default function LthtAddOrEdit({ onLthtClose, onLthtSubmitForm, renderStudent }) {
     console.log(renderStudent);
-    const [lthtMaSV, setLthtMaSV] = useState('');
-    const [lthtHoSV, setLthtHoSV] = useState('');
-    const [lthtTenSV, setLthtTenSV] = useState('');
-    const [lthtPhai, setLthtPhai] = useState('');
-    const [lthtNgaySinh, setLthtNgaySinh] = useState('');
-    const [lthtNoiSinh, setLthtNoiSinh] = useState('');
-    const [lthtMaKH, setLthtMaKH] = useState('');
-    const [lthtHocBong, setLthtHocBong] = useState('');
-    const [lthtDiemTrungBinh, setLthtDiemTrungBinh] = useState('');
+
+    const [lthtMaSV, setLthtMaSV] = useState("");
+    const [lthtHoSV, setLthtHoSV] = useState("");
+    const [lthtTenSV, setLthtTenSV] = useState("");
+    const [lthtPhai, setLthtPhai] = useState("");
+    const [lthtNgaySinh, setLthtNgaySinh] = useState("");
+    const [lthtNoiSinh, setLthtNoiSinh] = useState("");
+    const [lthtMaKH, setLthtMaKH] = useState("");
+    const [lthtHocBong, setLthtHocBong] = useState("");
+    const [lthtDiemTrungBinh, setLthtDiemTrungBinh] = useState("");
 
     useEffect(() => {
         if (renderStudent) {
-            setLthtMaSV(renderStudent.MaSV || '');
-            setLthtHoSV(renderStudent.HoSV || '');
-            setLthtTenSV(renderStudent.TenSV || '');
-            setLthtPhai(renderStudent.Phai || '');
-            setLthtNgaySinh(renderStudent.NgaySinh || '');
-            setLthtNoiSinh(renderStudent.NoiSinh || '');
-            setLthtMaKH(renderStudent.MaKH || '');
-            setLthtHocBong(renderStudent.HocBong || '');
-            setLthtDiemTrungBinh(renderStudent.DiemTrungBinh || '');
+            setLthtMaSV(renderStudent.LthtMaSV);
+            setLthtHoSV(renderStudent.LthtHoSV);
+            setLthtTenSV(renderStudent.LthtTenSV);
+            setLthtPhai(renderStudent.LthtPhai);
+            setLthtNgaySinh(renderStudent.LthtNgaySinh);
+            setLthtNoiSinh(renderStudent.LthtNoiSinh);
+            setLthtMaKH(renderStudent.LthtMaKH);
+            setLthtHocBong(renderStudent.LthtHocBong);
+            setLthtDiemTrungBinh(renderStudent.LthtDiemTrungBinh);
         }
     }, [renderStudent]);
 
@@ -45,9 +46,14 @@ export default function LthtAddOrEdit({ onLthtClose, onLthtSubmitForm, renderStu
             LthtDiemTrungBinh: lthtDiemTrungBinh
         };
 
-        // Gọi hàm onLthtSubmitForm từ props để thông báo submit form thành công
-        onLthtSubmitForm(lthtObjectStudent);
-    };
+        try {
+            const lthtRes = await axios.post("SINHVIEN", lthtObjectStudent);
+            console.log("Response after submit:", lthtRes.data); // Log response if needed
+            onLthtSubmitForm(false); // Close the form after submission
+        } catch (error) {
+            console.error("Error submitting data:", error);
+        }
+    }
 
     return (
         <div className='border'>
@@ -102,8 +108,8 @@ export default function LthtAddOrEdit({ onLthtClose, onLthtSubmitForm, renderStu
                     placeholder="DiemTrungBinh" aria-label="DiemTrungBinh" aria-describedby="DiemTrungBinh" />
             </div>
             
-            <button className='btn btn-primary' name='btnLthtSave' onClick={(ev) => lthtHandleSubmit(ev)}>Ghi lại</button>
-            <button className='btn btn-danger' onClick={lthtHandleClose}>Đóng</button>
+            <button className='btn btn-primary' name='btnLthtSave' onClick={(ev) => lthtHandleSubmit(ev)}>Ghi lai</button>
+            <button className='btn btn-danger' onClick={lthtHandleClose}>Dong</button>
         </div>
-    );
+    )
 }
