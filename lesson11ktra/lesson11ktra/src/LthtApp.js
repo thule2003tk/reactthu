@@ -25,7 +25,7 @@ const LthtApp = () => {
   useEffect(() => {
     lthtGetAllStudent();
     console.log("Day la State Data:", lthtListStudent);
-  }, []); // Empty dependency array to run the effect only once
+  }, ); // Empty dependency array to run the effect only once
 
   const [lthtAddOrEdit, setLthtAddOrEdit] = useState(false);
   const lthtInitStudent = {
