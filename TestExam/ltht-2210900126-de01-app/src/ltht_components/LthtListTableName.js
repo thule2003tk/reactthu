@@ -32,7 +32,7 @@ export default function LthtListTableName({ renderlthtListTableName = [], onLtht
 
     return (
         <div>
-            <h2>Danh sách thông tin .......</h2>
+            <h2>Danh sách thông tin ...</h2>
             <hr />
             <table className='table table-bordered'>
                 <thead>

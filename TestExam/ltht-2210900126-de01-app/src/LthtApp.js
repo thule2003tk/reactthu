@@ -51,7 +51,7 @@ export default function LthtApp() {
 
   return (
     <div className='container border my-3'> 
-      <h1>Bài đánh giá hết học phần - Lê Thượng Hoài Thư: 2210900126</h1>
+      <h1>Bài đánh giá hết học phần - Lê Thượng Hoài Thu: 2210900126</h1>
       <hr />
       <LthtListTableName 
         renderLthtListTableName={lthtListTableName} 
