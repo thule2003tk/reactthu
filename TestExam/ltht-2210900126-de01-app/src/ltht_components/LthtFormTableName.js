@@ -54,7 +54,7 @@ export default function LthtFormTableName({ renderLthtTableName = {}, onLthtEdit
     return (
         <div>
             <button type="button" className="btn btn-primary my-3 mx-2" onClick={handleAddButton}>
-                Ltht Thêm mới
+                Ltht Add
             </button>
 
             <h2>{isAdding ? 'Form xử lý dữ liệu Thêm Mới' : 'Form xử lý dữ liệu Chỉnh Sửa'}</h2>
@@ -122,7 +122,7 @@ export default function LthtFormTableName({ renderLthtTableName = {}, onLthtEdit
                 </div>
 
                 <button type="submit" className="btn btn-primary my-3"onClick={handleAddButton}>
-                    Ltht Lưu
+                    Ltht Save
                 </button>
             </form>
         </div>
