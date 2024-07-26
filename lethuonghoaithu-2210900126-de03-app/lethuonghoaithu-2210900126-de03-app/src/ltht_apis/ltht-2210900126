@@ -1,0 +1,5 @@
+import axios from 'axios'
+
+export default axios.create({
+    baseURL: 'https://mockapi.io/clone/66a2f92d967c89168f218364',
+})
